@@ -1,9 +1,9 @@
-# Ex. No: 17C - DFS Traversal from a Given Source Vertex
+Ex. No: 17C - DFS Traversal from a Given Source Vertex
 
-## AIM:
+AIM:
 To write a Python program to **print DFS traversal** from a given source vertex.
 
-## ALGORITHM:
+ALGORITHM:
 
 **Step 1**: Start the program.
 
@@ -25,14 +25,42 @@ To write a Python program to **print DFS traversal** from a given source vertex.
 
 **Step 8**: End the program.
 
-## PYTHON PROGRAM
+PYTHON PROGRAM
 
-```
-ENTER YOUR CODE HERE
-```
+from collections import defaultdict
+class Graph:
+	def __init__(self):
+		self.graph = defaultdict(list)
+	def addEdge(self, u, v):
+		self.graph[u].append(v)
+	def DFSUtil(self, v, visited):
+	    visited.add(v)
+	    print(v,end=" ")
+	    for neighbour in self.graph[v]:
+	        if neighbour not in visited:
+	            self.DFSUtil(neighbour,visited)
+	def DFS(self, v):
+		visited = set()
+		self.DFSUtil(v, visited)
+n=int(input())
+g = Graph()
+g.addEdge(0, 1)
+g.addEdge(0, 2)
+g.addEdge(1, 2)
+g.addEdge(2, 0)
+g.addEdge(2, 3)
+g.addEdge(3, 3)
 
-## OUTPUT
-```
-```
+print("Following is DFS from (starting from vertex {})".format(n))
+g.DFS(n)
 
-## RESULT
+
+
+
+OUTPUT
+![image](https://github.com/user-attachments/assets/2adf6c81-8b30-46bc-a27f-f4f0a96e0b8a)
+
+
+RESULT
+
+Thus the Python program to **print DFS traversal** from a given source vertex has been implemented and executed successfully.
