@@ -1,9 +1,9 @@
-# Ex. No: 17B - BFS Traversal from a Given Source Vertex
+Ex. No: 17B - BFS Traversal from a Given Source Vertex
 
-## AIM:
+AIM:
 To write a Python program to **print BFS traversal** from a given source vertex.
 
-## ALGORITHM:
+ALGORITHM:
 
 **Step 1**: Start the program.
 
@@ -23,13 +23,51 @@ To write a Python program to **print BFS traversal** from a given source vertex.
 
 **Step 7**: End the program.
 
-## PYTHON PROGRAM
+PYTHON PROGRAM
 
-```
-ENTER YOUR CODE HERE
-```
+from collections import defaultdict
+class Graph:
+	def __init__(self):
+		self.graph = defaultdict(list)
+	def addEdge(self,u,v):
+		self.graph[u].append(v)
+	def BFS(self, s):
+		visited = [False] * (max(self.graph) + 1)
+		queue = []
+		queue.append(s)
+		visited[s] = True
+		while queue:
+		    s=queue.pop(0)
+		    print(s,end=" ")
+		    
+		    for i in self.graph[s]:
+		        if visited[i]==False:
+		            queue.append(i)
+		            visited[i]=True
 
-## OUTPUT
+		
+		
+		
+
+n=int(input())
+g = Graph()
+g.addEdge(0, 1)
+g.addEdge(0, 2)
+g.addEdge(1, 2)
+g.addEdge(2, 0)
+g.addEdge(2, 3)
+g.addEdge(3, 3)
+
+print ("Following is Breadth First Traversal"
+				" (starting from vertex {})".format(n))
+g.BFS(n)
 
 
-## RESULT
+
+OUTPUT
+![image](https://github.com/user-attachments/assets/2c34af24-d184-4a36-a628-d677551006b7)
+
+
+RESULT
+
+Thus Python program to **print BFS traversal** from a given source vertex has been implemented and executed successfully.
